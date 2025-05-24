@@ -40,13 +40,7 @@ def camel_to_snake(string: str) -> str:
 
 def parse_vote_dict(d: dict) -> dict:
     data = d.copy()
-
-    query = data.get("query", "").lstrip("?")
-    if query:
-        query_dict = {k: v for k, v in [pair.split("=") for pair in query.split("&")]}
-        data["query"] = DataDict(**query_dict)
-    else:
-        data["query"] = {}
+    data["query"] = {}
 
     if "bot" in data:
         data["bot"] = int(data["bot"])
